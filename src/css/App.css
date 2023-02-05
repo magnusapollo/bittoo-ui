@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.MuiPopover-root {
+  pointer-events: none;
+}
+
+.MuiPopover-root .MuiPopover-paper {
+  pointer-events: auto;
+}
+
+.MuiPopover-paper {
+  pointer-events: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +48,5 @@
     transform: rotate(360deg);
   }
 }
+
+
