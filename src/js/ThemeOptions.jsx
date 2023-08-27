@@ -10,6 +10,7 @@ export const themeOptions = {
     },
   },
   spacing: 10,
+  margin: 10,
   components: {
     // Name of the component
     MuiAutocomplete: {

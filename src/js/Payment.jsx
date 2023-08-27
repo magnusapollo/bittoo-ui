@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+//import { loadStripe } from '@stripe/stripe-js';
 import CreditCardForm from './CreditCardForm';
 import { Button, CircularProgress, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = '';//loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 const axios = require('axios');
 
 

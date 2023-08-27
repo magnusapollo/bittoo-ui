@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useStripe} from '@stripe/react-stripe-js';
 const axios = require('axios');
 
-const PaymentStatus = (props) => {
+const PaymentStatus = ({piClientSecret}) => {
   const stripe = useStripe();
   const [message, setMessage] = useState(null);
 
@@ -13,7 +13,7 @@ const PaymentStatus = (props) => {
 
     // Retrieve the PaymentIntent
     stripe
-      .retrievePaymentIntent(props.piClientSecret)
+      .retrievePaymentIntent(piClientSecret)
       .then(({paymentIntent}) => {
         // Inspect the PaymentIntent `status` to indicate the status of the payment
         // to your customer.
@@ -45,6 +45,7 @@ const PaymentStatus = (props) => {
             break;
         }
       });
+      // eslint-disable-next-line
   }, [stripe]);
 
 

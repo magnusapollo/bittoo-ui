@@ -5,10 +5,11 @@ import jwt from 'jwt-decode' // import dependency
 
 const axios = require('axios');
         
-const LoginForm = (props) => {
+const LoginForm = () => {
   let navigate = useNavigate();
   const location = useLocation();
   const redirLoc = location.state.redirLoc;
+  const redirState = location.state.redirState;
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,8 +21,7 @@ const LoginForm = (props) => {
       const cookie = new Cookies();
       cookie.set('access_token', accessToken);
       cookie.set('customerId', custId);
-      navigate(redirLoc);
-      
+      redirState !== null ? navigate(redirLoc, redirState) : navigate(redirLoc);
     }).catch((error) => {
       console.log(error);
     });

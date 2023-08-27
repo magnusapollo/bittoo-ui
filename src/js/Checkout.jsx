@@ -3,20 +3,20 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import Cookies from 'universal-cookie';
 import AddressForm from './Address';
+import AppBarWrapper from './AppBarWrapper';
 import Payment from './Payment';
 
 const axios = require('axios');
 
 const Checkout = (props) => {
   const location = useLocation();
-  const cartId = location.state.cartId;
+  let cartId = location.state.cartId;
   const [shipping, setShipping] = useState(null);
   const [proceedToPayment, setProceedToPayment] = useState(false)
   const [customer, setCustomer] = useState({})
   const [addNewAddress, setAddNewAddress] = useState(false);
-  useEffect(() => {
-    const cartId = location.state.cartId;
-    
+
+  useEffect(() => {    
     const url = `/v1/carts/${cartId}/checkout`;
     const cookies = new Cookies()
     const accessTokenCookie = cookies.get('access_token');
@@ -45,7 +45,7 @@ const Checkout = (props) => {
         console.log(error);
       });
     }
-  }, []);
+  });
 
   const addShipping = (name, line1, line2, line3, city, state, zip, country) => {
     const url = `/v1/carts/${cartId}/checkout/shipping`;
@@ -70,6 +70,7 @@ const Checkout = (props) => {
 
   return (
     <Container>
+      <AppBarWrapper />
       {!proceedToPayment && shipping !== null &&   
       <Container>
         <FormControl>
